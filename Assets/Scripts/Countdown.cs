@@ -9,6 +9,7 @@ public class Countdown : MonoBehaviour
     public GameObject Countdown_;
     public AudioSource getReady;
     public AudioSource goAudio;
+    public AudioSource inGameMusic;
     public GameObject LapTimer;
     public GameObject CarControls;
     
@@ -39,6 +40,8 @@ public class Countdown : MonoBehaviour
     	Countdown_.SetActive(false);
     	goAudio.Play();
     	LapTimer.SetActive(true);
+    	inGameMusic.Play();
+
     }
     
 }
