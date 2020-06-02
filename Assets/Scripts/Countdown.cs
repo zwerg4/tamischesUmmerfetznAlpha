@@ -12,6 +12,7 @@ public class Countdown : MonoBehaviour
     public AudioSource inGameMusic;
     public GameObject LapTimer;
     public GameObject CarControls;
+    public GameObject Schranke;
     
     
     // Start is called before the first frame update
@@ -39,6 +40,9 @@ public class Countdown : MonoBehaviour
     	yield return new WaitForSeconds(1);
     	Countdown_.SetActive(false);
     	goAudio.Play();
+    	Vector3 newpos = new Vector3(-2f,5f,9.5f);
+    	Schranke.transform.Rotate(-90.0f, 0.0f, 0.0f, Space.Self);
+    	Schranke.transform.position = newpos;
     	LapTimer.SetActive(true);
     	inGameMusic.Play();
 
