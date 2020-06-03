@@ -11,6 +11,6 @@ public class Restart : MonoBehaviour
      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // loads current scene
      LapTimeManager.MinuteCount = 0;
      LapTimeManager.SecondCount = 0;
-     LapTimeManager.MilliCount = 0;
+     LapTimeManager.MilliCount = 0.0f;
    }
 }

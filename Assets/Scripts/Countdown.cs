@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Proyecto26;
+
 
 public class Countdown : MonoBehaviour
 {
@@ -13,11 +15,52 @@ public class Countdown : MonoBehaviour
     public GameObject LapTimer;
     public GameObject CarControls;
     public GameObject Schranke;
+    public GameObject WRUserLabel;
+    public GameObject WRmin;
+    public GameObject WRsec;
+    public GameObject WRmilli;
+    
+    
+    public GameObject WRInput;
+    public GameObject WRSubmit;
+    public GameObject newWRLabel;
+    
+    public static WorldRecord WR = new WorldRecord("no Internet Connection", 00,00,0);
     
     
     // Start is called before the first frame update
     void Start()
     {
+    	//RestClient.Put("https://tamischesummerfetzn.firebaseio.com/.json", WR);
+    
+        WRInput.SetActive(false);
+    	WRSubmit.SetActive(false);
+        newWRLabel.SetActive(false);
+        	
+    	WRUserLabel.GetComponent<Text>().text = "" + WR.username;
+    	
+        if(WR.sec <= 9)
+        {
+             WRsec.GetComponent<Text>().text = "0" + WR.sec + ".";
+        }
+        else
+    	{
+            WRsec.GetComponent<Text>().text = "" + WR.sec + ".";
+    	}
+
+    	if(WR.min <= 9)
+    	{
+            WRmin.GetComponent<Text>().text = "0" + WR.min + ":";
+    	}
+    	else
+    	{
+            WRmin.GetComponent<Text>().text = "" + WR.min + ":";
+   	}
+
+    	WRmilli.GetComponent<Text>().text = "" + WR.milli;
+		    
+    	checkWR();    	
+    	
     	StartCoroutine(CountStart());    
     }
     
@@ -46,6 +89,37 @@ public class Countdown : MonoBehaviour
     	LapTimer.SetActive(true);
     	inGameMusic.Play();
 
+    }
+    
+    void checkWR()
+    {
+        RestClient.Get<WorldRecord>("https://tamischesummerfetzn.firebaseio.com/.json").Then(response =>
+        {
+            //Debug.Log("INSIDE RESTCLIENT, response: " + response.username + " / " + response.time);
+        WR = response;
+        WRUserLabel.GetComponent<Text>().text = "" + WR.username;
+    	    
+        if(WR.sec <= 9)
+        {
+             WRsec.GetComponent<Text>().text = "0" + WR.sec + ".";
+        }
+        else
+    	{
+            WRsec.GetComponent<Text>().text = "" + WR.sec + ".";
+    	}
+
+    	if(WR.min <= 9)
+    	{
+            WRmin.GetComponent<Text>().text = "0" + WR.min + ":";
+    	}
+    	else
+    	{
+            WRmin.GetComponent<Text>().text = "" + WR.min + ":";
+   	}
+
+    	WRmilli.GetComponent<Text>().text = "" + WR.milli;
+    	    
+        });
     }
     
 }
