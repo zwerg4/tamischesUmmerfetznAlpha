@@ -2506,7 +2506,7 @@ PrefabInstance:
     - target: {fileID: 114415631047791334, guid: af384ca59b0f24483b0163f2ae19fe10,
         type: 3}
       propertyPath: jumpVel
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114415631047791334, guid: af384ca59b0f24483b0163f2ae19fe10,
         type: 3}
@@ -2516,7 +2516,7 @@ PrefabInstance:
     - target: {fileID: 114415631047791334, guid: af384ca59b0f24483b0163f2ae19fe10,
         type: 3}
       propertyPath: boostForce
-      value: 1000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114415631047791334, guid: af384ca59b0f24483b0163f2ae19fe10,
         type: 3}
@@ -2536,7 +2536,17 @@ PrefabInstance:
     - target: {fileID: 114415631047791334, guid: af384ca59b0f24483b0163f2ae19fe10,
         type: 3}
       propertyPath: boost
-      value: 1000
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114415631047791334, guid: af384ca59b0f24483b0163f2ae19fe10,
+        type: 3}
+      propertyPath: motorTorque.m_Curve.Array.data[1].time
+      value: 125.59369
+      objectReference: {fileID: 0}
+    - target: {fileID: 114415631047791334, guid: af384ca59b0f24483b0163f2ae19fe10,
+        type: 3}
+      propertyPath: motorTorque.m_Curve.Array.data[1].value
+      value: 501.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af384ca59b0f24483b0163f2ae19fe10, type: 3}
