@@ -63,7 +63,7 @@ public class EndTrigger : MonoBehaviour
 	    	else
 	    	{
 	    	  //NIX
-	    	  newWRLabel.GetComponent<Text>().text = "Too slow, press Restart";
+          	  newWRLabel.GetComponent<Text>().text = LapTimeManager.MinuteCount + ":" + LapTimeManager.SecondCount + "." + (int) LapTimeManager.MilliCount + "\nToo slow, press Restart";
 	    	  newWRLabel.SetActive(true);
     	      	  LapTimeManager.MinuteCount = 0;
     		  LapTimeManager.SecondCount = 0;
@@ -75,7 +75,7 @@ public class EndTrigger : MonoBehaviour
     	    else
     	    {
     	    	//NIX
-	    	newWRLabel.GetComponent<Text>().text = "Too slow, press Restart";
+          	newWRLabel.GetComponent<Text>().text = LapTimeManager.MinuteCount + ":" + LapTimeManager.SecondCount + "." + (int) LapTimeManager.MilliCount + "\nToo slow, press Restart";
 	        newWRLabel.SetActive(true);
     	    	LapTimeManager.MinuteCount = 0;
     		LapTimeManager.SecondCount = 0;
@@ -86,7 +86,7 @@ public class EndTrigger : MonoBehaviour
     	else
     	{
     		//NIX
-          	newWRLabel.GetComponent<Text>().text = "Too slow, press Restart";
+          	newWRLabel.GetComponent<Text>().text = LapTimeManager.MinuteCount + ":" + LapTimeManager.SecondCount + "." + (int) LapTimeManager.MilliCount + "\nToo slow, press Restart";
 	    	newWRLabel.SetActive(true);
     		LapTimeManager.MinuteCount = 0;
     		LapTimeManager.SecondCount = 0;

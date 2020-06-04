@@ -92,12 +92,12 @@ namespace VehicleBehaviour {
 
         // How hight do you want to jump?
         [Range(1f, 1.5f)]
-        [SerializeField] float jumpVel = 1.3f;
-        public float JumpVel { get { return jumpVel; } set { jumpVel = Mathf.Clamp(value, 1.0f, 1.5f); } }
+        [SerializeField] float jumpVel = 0f; //1.3f
+        public float Vel { get { return jumpVel; } set { jumpVel = Mathf.Clamp(value, 1.0f, 1.5f); } }
 
         // How hard do you want to drift?
         [Range(0.0f, 2f)]
-        [SerializeField] float driftIntensity = 1f;
+        [SerializeField] float driftIntensity = 0.5f;
         public float DriftIntensity { get { return driftIntensity; } set { driftIntensity = Mathf.Clamp(value, 0.0f, 2.0f); }}
 
         // Reset Values
@@ -150,7 +150,7 @@ namespace VehicleBehaviour {
         public float MaxBoost { get { return maxBoost; } set {maxBoost = value;} }
 
         // Current boost available
-        [SerializeField] float boost = 10f;
+        [SerializeField] float boost = 1f;
         public float Boost { get { return boost; } set { boost = Mathf.Clamp(value, 0f, maxBoost); } }
 
         // Regen boostRegen per second until it's back to maxBoost
