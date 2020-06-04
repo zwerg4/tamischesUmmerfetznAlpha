@@ -92,8 +92,8 @@ namespace VehicleBehaviour {
 
         // How hight do you want to jump?
         [Range(1f, 1.5f)]
-        [SerializeField] float jumpVel = 0f; //1.3f
-        public float Vel { get { return jumpVel; } set { jumpVel = Mathf.Clamp(value, 1.0f, 1.5f); } }
+        [SerializeField] float jumpVel = 1f; //1.3f
+        public float JumpVel { get { return jumpVel; } set { jumpVel = Mathf.Clamp(value, 1.0f, 1.5f); } }
 
         // How hard do you want to drift?
         [Range(0.0f, 2f)]
