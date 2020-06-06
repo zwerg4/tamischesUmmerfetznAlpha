@@ -9,30 +9,30 @@ public class EndTrigger : MonoBehaviour
 {
     public GameObject StartTrigg;
     public GameObject EndTrigg;
-    
+
     public GameObject MinuteDisplay;
     public GameObject SecondDisplay;
     public GameObject MilliDisplay;
-    
+
     public GameObject LapTimeBox;
-    
+
     public GameObject WRInput;
     public GameObject WRSubmit;
     public GameObject newWRLabel;
-    
+
     private int newWRmin;
     private int newWRsec;
     private float newWRmilli;
-    
+
     void OnTriggerEnter()
     {
     	Debug.Log("End Trigger passed with: " + LapTimeManager.MinuteCount + ":" + LapTimeManager.SecondCount + "." + LapTimeManager.MilliCount);
     	EndTrigg.SetActive(false);
-    	
+
     	if(LapTimeManager.MinuteCount < Countdown.WR.min)
     	{
     		//WR
-	        newWRmin = LapTimeManager.MinuteCount;
+	      newWRmin = LapTimeManager.MinuteCount;
 	     	newWRsec = LapTimeManager.SecondCount;
 	     	newWRmilli = LapTimeManager.MilliCount;
 	     	Debug.Log("New WR1 vars: " + newWRmin +  ":" +  newWRsec + "." + newWRmilli);
@@ -70,7 +70,7 @@ public class EndTrigger : MonoBehaviour
     		  LapTimeManager.MilliCount = 0;
 	    	  return;
 	    	}
-	    	
+
     	    }
     	    else
     	    {
@@ -93,37 +93,37 @@ public class EndTrigger : MonoBehaviour
     		LapTimeManager.MilliCount = 0;
     		return;
     	}
-    	
+
       	StartTrigg.SetActive(true);
     	EndTrigg.SetActive(false);
     }
-    
-    
+
+
     void newWR()
     {
-     	
+
      	WRInput.SetActive(true);
-     	WRSubmit.SetActive(true); 
-     	newWRLabel.SetActive(true); 
-     	
+     	WRSubmit.SetActive(true);
+     	newWRLabel.SetActive(true);
+
 	//Debug.Log("New WR vars: " + newWRmin +  ":" +  newWRsec + "." + newWRmilli);
-    		     		
+
         WorldRecord newWR = new WorldRecord("user", newWRmin, newWRsec, newWRmilli);
 	Countdown.WR = newWR;
      	//Debug.Log("New WR obj: " + newWR.username + "  " + newWR.min +  ":" +  newWR.sec + "." + newWR.milli);
-    
+
     }
-    
-    
+
+
     public void button_pressed()
     {
     	//Debug.Log("BUTTON PRESSED");
-    	
+
     	Countdown.WR.username = WRInput.GetComponent<Text>().text;
      	//Debug.Log("New WR obj: " + Countdown.WR.username + "  " + Countdown.WR.min +  ":" +  Countdown.WR.sec + "." + Countdown.WR.milli);
         RestClient.Put("https://tamischesummerfetzn.firebaseio.com/.json", Countdown.WR);
-        
+
      	WRInput.SetActive(false);
-     	WRSubmit.SetActive(false); 
+     	WRSubmit.SetActive(false);
     }
 }
